@@ -35,12 +35,29 @@
      * */
     const todoControl = (command, value) => {
     // 대충 뭘 작성함
+        switch(command) {
+            case "create":
+                createTodo(value);
+                break;
+            case "read":
+                readTodo(value);
+                break;
+            case "update":
+                updateTodo(value);
+                break;
+            case "delete":
+                deleteTodo(value);
+                break;
+            defalt:
+                console.log("command error!");
+        }
     };
 
     // 보너스: newTodo를 비구조화 할당하여 todos에 추가하세요.
     /** @param {{ id: number, title: string, text: string }} newTodo */
     const createTodo = (newTodo) => {
     // todos에 새로운 todo를 삽입
+        const todos = {id: newTodo.id, title: newTodo.title, text:newTodo.text};
     // ㅇㅇㅇ
     };
 
@@ -48,6 +65,9 @@
     // 보너스: 리터럴 문자를 활용해 출력하세요.
     const readTodo = () => {
     // todos를 하나씩 출력 형식에 맞춰 출력
+        for (value in todos) {
+            console.log(`id: ${value.id}, title: ${value.title}, text: ${value.text}`);
+        }
     // ㅇㅇㅇ
     };
 
@@ -58,7 +78,11 @@
     // if (업데이트 하고자 하는 todo를 찾을 수 없다면) {
     //   return 에러 메시지를 출력하세요
     // }
+        if (!(targetTodo.id === todos.id)) {
+            return console.log(`id = ${targetTodo.id} 에 맞는 todo를 찾을 수 없습니다.`);
+        }
     // 여기에 업데이트 로직을 작성하세요
+        const updatetodos = todos.map((value) => value.id === targetTodo.id ? targetTodo : value );
     // ㅇㅇㅇ
     };
 
@@ -69,7 +93,16 @@
     // if (해당하는 todo id가 todo 데이터에 없다면) {
     //   return console.log(여기에 에러 메시지를 쓰세요);
     // }
+    /*   if (targetTodo.id === value.id) {
+            return console.log(`id = ${targetTodo.id} 에 맞는 todo를 찾을 수 없습니다.`);
+        }*/
     // 여기에 삭제 로직을 작성하세요
+        const onDelete = (id) => {
+            const deleteId = 
+                todos.filter((id) => todos.id !== id);
+                console.log("삭제완료메세지");
+        };
+
     //ㅇㅇㅇ
     };
 
@@ -120,3 +153,4 @@
     };
 
     test();
+
