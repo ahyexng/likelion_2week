@@ -65,8 +65,8 @@
     // 보너스: 리터럴 문자를 활용해 출력하세요.
     const readTodo = () => {
     // todos를 하나씩 출력 형식에 맞춰 출력
-        for (value in todos) {
-            console.log(`id: ${value.id}, title: ${value.title}, text: ${value.text}`);
+        for (todoValue in todos) {
+            console.log(`id: ${todo.id}, title: ${todo.title}, text: ${todo.text}`);
         }
     // ㅇㅇㅇ
     };
@@ -78,11 +78,9 @@
     // if (업데이트 하고자 하는 todo를 찾을 수 없다면) {
     //   return 에러 메시지를 출력하세요
     // }
-        if (!(targetTodo.id === todos.id)) {
-            return console.log(`id = ${targetTodo.id} 에 맞는 todo를 찾을 수 없습니다.`);
-        }
+        const findId = todos.findIndex((todoValue) => todoValue.id === targetTodo.id );      
+        (findId === -1)  ? (console.log(`id = ${targetTodo.id}에 맞는 todo를 찾을 수 없습니다.`)) : (todos[findId] = targetTodo);
     // 여기에 업데이트 로직을 작성하세요
-        const updatetodos = todos.map((value) => value.id === targetTodo.id ? targetTodo : value );
     // ㅇㅇㅇ
     };
 
