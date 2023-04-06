@@ -48,7 +48,7 @@
             case "delete":
                 deleteTodo(value);
                 break;
-            defalt:
+            default:
                 console.log("command error!");
                 break;
         }
@@ -80,22 +80,25 @@
     // if (업데이트 하고자 하는 todo를 찾을 수 없다면) {
     //   return 에러 메시지를 출력하세요
     // }
+    if (!(todos.find((todoValue) => todoValue.id === targetTodo.id)))
+    console.log(`id = ${targetTodo.id}에 맞는 todo를 찾을 수 없습니다.`);
     // 여기에 업데이트 로직을 작성하세요
-    // ㅇㅇㅇ
+    todos = todos.map((todoValue) => (todoValue.id === targetTodo.id ? targetTodo : todoValue));
     };
 
     // 에러처리: 만약 업데이트하려는 todo를 찾을 수 없는 경우 'id = n에 맞는 todo를 찾을 수 없습니다.' 를 출력하세요.
     // 보너스: filter 함수를 사용해 구현해보세요
     /** @param {number} id */
     const deleteTodo = (id) => {
-    // if (해당하는 todo id가 todo 데이터에 없다면) {
+         // if (해당하는 todo id가 todo 데이터에 없다면) {
     //   return console.log(여기에 에러 메시지를 쓰세요);
     // }
-    // 여기에 삭제 로직을 작성하세요
+    if (!(todos.find((todoValue) => todoValue.id === id)))
+    console.log(`id = ${id}에 맞는 todo를 찾을 수 없습니다.`);
+// 여기에 삭제 로직을 작성하세요
+    todos = todos.filter((todoValue) => todoValue.id !== id);
     }
 
-
-    //ㅇㅇㅇ
 
     /*
         예상출력:
